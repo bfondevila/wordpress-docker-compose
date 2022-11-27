@@ -69,8 +69,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      #- ./config/nginx-default.conf:/etc/nginx/conf.d/nginx-default.conf
-      - ./config/nginx-request-cert.conf:/etc/nginx/conf.d/nginx-default.conf # Use this config instead of default for the first creation of the SSL cert
+      - ./config/nginx-default.conf:/etc/nginx/conf.d/nginx-default.conf
+      #- ./config/nginx-request-cert.conf:/etc/nginx/conf.d/nginx-default.conf # Use this config instead of default for the first creation of the SSL cert
       - ./wp-app:/var/www/html:rw
       - ./letsencrypt/conf:/etc/letsencrypt
 
