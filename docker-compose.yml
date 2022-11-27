@@ -39,6 +39,7 @@ services:
       PMA_PORT: 3306
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
       UPLOAD_LIMIT: 50M
+      PMA_ABSOLUTE_URI: https://test.sam-star.co.uk/dbadmin/
     ports:
       - 80
     depends_on:
