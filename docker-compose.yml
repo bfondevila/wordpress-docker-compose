@@ -40,7 +40,7 @@ services:
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
       UPLOAD_LIMIT: 50M
     ports:
-      - 8080:80
+      - 127.0.0.1:8090:80
     depends_on:
       - db
     links:
@@ -70,16 +70,8 @@ services:
       - "443:443"
     volumes:
       - ./config/nginx-default.conf:/etc/nginx/conf.d/nginx-default.conf
-      #- ./config/nginx-request-cert.conf:/etc/nginx/conf.d/nginx-default.conf # Use this config instead of default for the first creation of the SSL cert
       - ./wp-app:/var/www/html:rw
       - ./letsencrypt/conf:/etc/letsencrypt
-
-  certbot:
-    container_name: certboot
-    image: certbot/certbot
-    volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
 
   letsencrypt:
     restart: always
