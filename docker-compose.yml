@@ -71,8 +71,10 @@ services:
     volumes:
       - ./config/nginx-default.conf:/etc/nginx/conf.d/nginx-default.conf
       #- ./config/nginx-request-cert.conf:/etc/nginx/conf.d/nginx-default.conf # Use this config instead of default for the first creation of the SSL cert
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
       - ./wp-app:/var/www/html:rw
-      - ./letsencrypt/conf:/etc/letsencrypt
+      # - ./letsencrypt/conf:/etc/letsencrypt
 
   certbot:
     container_name: certboot
